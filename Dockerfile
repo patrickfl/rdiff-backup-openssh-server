@@ -1,7 +1,7 @@
 #
 # rdiff-backup-openssh-server 
 #
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 MAINTAINER Patrick Flaig
 
 # Disable interactive installer interface
