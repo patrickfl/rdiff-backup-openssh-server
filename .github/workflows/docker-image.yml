@@ -15,4 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag rdiff-backup-openssh-server:$(date +%s) --tag rdiff-backup-openssh-server:latest
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: 
+        echo $GITHUB_TOKEN | docker login -u publisher --password-stdin ghcr.io
+        docker build . --file Dockerfile --tag ghcr.io/patrickfl/rdiff-backup-openssh-server:latest --tag rdiff-backup-openssh-server:$(date +%s) --tag rdiff-backup-openssh-server:latest
+        docker push ghcr.io/patrickfl/rdiff-backup-openssh-server:latest
