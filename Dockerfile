@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install openssh-server
 RUN apt-get update && \
 apt-get --no-install-recommends install -y openssh-server rdiff-backup && \
-rm -rf /var/lib/apt/lists/* && \
+rm -rf /var/lib/apt/lists/* && rm -rf /var/cache/apt && \
 mkdir /var/run/sshd
 
 # Create user and home
